@@ -41,7 +41,7 @@ def imported_libs(path: str) -> Set[str]:  # primeste path-ul de la repo
         sys.exit()
 
 
-def check_library_safety(path:str):
+def check_library_Safety(path:str):
     # verifica librariile cu safety tool si afiseaza rezultatele
     try:
         if not os.path.exists("requirements.txt"):
@@ -58,7 +58,7 @@ def check_library_safety(path:str):
         sys.exit()
 
 
-def check_code_bandit(path: str):
+def check_code_Bandit(path: str):
     # analizeaza vulnerabilitati din cod cu Bandit
     try:
         result = subprocess.run(
@@ -92,7 +92,7 @@ def main():
     url_git = sys.argv[1]
     repo = clone_repo(url_git)
     print(f"Imported libraries/functions: {imported_libs(repo)}")
-    print(f"Library vulnerabilities:\n{check_library_safety(repo)}")
-    print(f"Code vulnerabilities:\n{check_code_bandit(repo)}")
+    print(f"Code vulnerabilities:\n{check_code_Bandit(repo)}") 
+    print(f"Library vulnerabilities:\n{check_library_Safety(repo)}")
     shutil.rmtree(repo, onerror=handle_remove_readonly)
 main()
